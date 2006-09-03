@@ -19,9 +19,12 @@ BEGIN { use_ok('ExportTo') };
 
   use ExportTo (HOGE2 => [qw/function1 function2/], HOGE3 => [qw/function3/]);
   use ExportTo (HOGE => [qw/Test::More::is/]);
+  use ExportTo (HOGE4 => {func1 => 'function1', func2 => \&function2});
   is(HOGE2::function1(), 1);
   is(HOGE2::function2(), 2);
   is(HOGE3::function3(), 3);
+  is(HOGE4::func1(), 1);
+  is(HOGE4::func2(), 2);
 }
 
 {
@@ -41,9 +44,13 @@ BEGIN { use_ok('ExportTo') };
 
   export_to('+HOGE' => [qw/function1 function2/], HOGE3 => [qw/+function3/]);
   export_to(HOGEHOGE => [qw/Test::More::is/]);
+  export_to('+HOGE' => {func1 => 'function1', func2 => \&function2}, HOGE3 => { func3 => '+function3'});
 
   is(HOGE::function1(), -1);
   is(HOGE::function2(), -2);
   is(HOGE3::function3(), -3);
+  is(HOGE::func1(), -1);
+  is(HOGE::func2(), -2);
+  is(HOGE3::func3(), -3);
 }
 
