@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME                => 'ExportTo',
-    AUTHOR              => 'Ktat <atusi@pure.ne.jp>',
+    AUTHOR              => 'Ktat <ktat@cpan.org>',
     VERSION_FROM        => 'lib/ExportTo.pm',
     ABSTRACT_FROM       => 'lib/ExportTo.pm',
     PL_FILES            => {},
